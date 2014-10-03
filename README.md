@@ -1,8 +1,8 @@
-## plenv - base image for managing Perl versions with plenv ##
+## moltar/plenv - Docker base image for managing Perl versions with plenv ##
 
-This is only a base image for installing various Perl versions. This image uses the `ONBUILD` instruction to build Perl versions in the children images.
+This is only a base image for installing various Perl versions. This image uses `ONBUILD` instruction to build Perl versions in children images.
 
-This Docker image will install `plenv` and Perl version(s) from `.perl-version` file.
+This image will install `plenv` and Perl version(s) from `.perl-version` file.
 
 In addition to basic Perl it will install `cpanm` for each Perl version.
 
