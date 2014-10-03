@@ -10,9 +10,18 @@ The image is based on [baseimage-docker](https://github.com/phusion/baseimage-do
 
 ## Usage ##
 
+### Dockerfile ###
+
 ```
-$ echo -n "5.20.1" > .perl-version
-$ echo "FROM moltar/plenv:latest" > Dockerfile
-$ docker build -t perl-$(cat .perl-version) .
-$ docker run --rm perl-$(cat .perl-version) exec cpanm Carton
+FROM moltar/plenv:latest
+ENV PLENV_VERSION 5.20.1
+```
+
+### Build ###
+
+```
+$ export PERL_VERSION=5.20.1
+$ echo -n $PERL_VERSION > .perl-version
+$ docker build -t perl-$PERL_VERSION .
+$ docker run --rm perl-$PERL_VERSION exec cpanm Carton
 ```
