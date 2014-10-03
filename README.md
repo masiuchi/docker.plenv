@@ -1,4 +1,4 @@
-## moltar/plenv - Docker base image for managing Perl versions with plenv ##
+## Docker base image for managing Perl versions with plenv ##
 
 This is only a base image for installing various Perl versions. This image uses `ONBUILD` instruction to build Perl versions in children images.
 
@@ -10,7 +10,7 @@ The image is based on [baseimage-docker](https://github.com/phusion/baseimage-do
 
 ## Usage ##
 
-```bash
+```
 $ echo -n "5.20.1" > .perl-version
 $ echo "FROM moltar/plenv:latest" > Dockerfile
 $ docker build -t perl-$(cat .perl-version) .
