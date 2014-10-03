@@ -6,7 +6,7 @@ This image will install `plenv` and Perl version(s) from `.perl-version` file.
 
 In addition to basic Perl it will install `cpanm` for each Perl version.
 
-The image is based on [baseimage-docker](/phusion/baseimage-docker).
+The image is based on [baseimage-docker](https://github.com/phusion/baseimage-docker).
 
 ## Usage ##
 
