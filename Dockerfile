@@ -19,4 +19,4 @@ RUN apt-get update -qq && apt-get install -y gcc make perl-modules && \
 ENTRYPOINT ["/run.sh"]
 
 ONBUILD ADD ./.perl-version /tmp/.perl-version
-ONBUILD RUN bash -lc 'for v in $(cat /tmp/.perl-version); do plenv install $v && plenv shell $v && plenv install-cpanm && plenv rehash; done; rm -rf /usr/local/plenv/build/* /tmp/.perl-version;'
+ONBUILD RUN bash -lc 'for v in $(cat /tmp/.perl-version); do plenv install $v && plenv shell $v && plenv install-cpanm && plenv rehash; done; rm -rf /usr/local/plenv/build/* /tmp/.perl-version /root/.cpanm/;'
