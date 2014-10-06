@@ -12,4 +12,4 @@ plenv install $PLENV_VERSION        && \
 plenv global $PLENV_VERSION         && \
 plenv install-cpanm                 && \
 plenv rehash                        && \
-rm -rf /usr/local/plenv/build/*;
+rm -rf /usr/local/plenv/build/* /root/.cpanm/;

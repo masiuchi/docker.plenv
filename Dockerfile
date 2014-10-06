@@ -5,8 +5,9 @@ MAINTAINER moltar <moltar@moltar.net>
 ENV DEBIAN_FRONTEND     noninteractive
 ENV PLENV_ROOT          /usr/local/plenv
 ENV PATH                $PLENV_ROOT/bin:$PATH
+ENV PLENV_INSTALL       $PLENV_ROOT/bin/plenv_install_perl.sh
 
-ADD plenv_install_perl.sh $PLENV_ROOT/bin/plenv_install_perl.sh
+ADD plenv_install_perl.sh $PLENV_INSTALL
 
 RUN apt-get update -qq && \
     apt-get install -y gcc make perl-modules && \
@@ -19,7 +20,3 @@ RUN apt-get update -qq && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ENTRYPOINT ["/sbin/my_init", "--", "plenv"]
-
-ONBUILD ADD ./.perl-version /tmp/.perl-version
-ONBUILD RUN plenv_install_perl.sh $(cat /tmp/.perl-version) && \
-            rm -rf /tmp/.perl-version /root/.cpanm/
