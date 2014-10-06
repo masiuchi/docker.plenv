@@ -6,7 +6,6 @@ ENV DEBIAN_FRONTEND     noninteractive
 ENV PLENV_ROOT          /usr/local/plenv
 ENV PATH                $PLENV_ROOT/bin:$PATH
 
-ADD run.sh /run.sh
 
 RUN apt-get update -qq && apt-get install -y gcc make perl-modules && \
     mkdir -p $PLENV_ROOT/plugins/perl-build && \
@@ -16,7 +15,7 @@ RUN apt-get update -qq && apt-get install -y gcc make perl-modules && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-ENTRYPOINT ["/run.sh"]
+ENTRYPOINT ["/sbin/my_init", "--", "plenv"]
 
 ONBUILD ADD ./.perl-version /tmp/.perl-version
 ONBUILD RUN bash -lc 'for v in $(cat /tmp/.perl-version); do plenv install $v && plenv shell $v && plenv install-cpanm && plenv rehash; done; rm -rf /usr/local/plenv/build/* /tmp/.perl-version /root/.cpanm/;'
