@@ -1,12 +1,14 @@
 ## Docker base image for managing Perl versions with plenv ##
 
-This is only a base image for installing various Perl versions. This image uses `ONBUILD` instruction to build Perl versions in children images.
+This is only a base image for installing various Perl versions.
 
-This image will install `plenv` and Perl version(s) from `.perl-version` file.
+This image provides an installation of `plenv` and a helper script `plenv_install_perl.sh` to cleanly install Perl versions.
 
-In addition to basic Perl it will install `cpanm` for each Perl version.
+In addition to basic Perl, it will install `cpanm` for each Perl version.
 
-The image is based on [baseimage-docker](https://github.com/phusion/baseimage-docker).
+The image is based on [phusion/baseimage](https://registry.hub.docker.com/u/phusion/baseimage).
+
+The image is available as a trusted build in [Docker Hub](https://registry.hub.docker.com/u/moltar/plenv/).
 
 ## Usage ##
 
@@ -15,13 +17,17 @@ The image is based on [baseimage-docker](https://github.com/phusion/baseimage-do
 ```
 FROM moltar/plenv:latest
 ENV PLENV_VERSION 5.20.1
+RUN $PLENV_INSTALL $PLENV_VERSION
 ```
 
 ### Build ###
 
 ```
-$ export PERL_VERSION=5.20.1
-$ echo -n $PERL_VERSION > .perl-version
-$ docker build -t perl-$PERL_VERSION .
-$ docker run --rm perl-$PERL_VERSION exec cpanm Carton
+$ docker build -t my-perl .
+$ docker run --rm my-perl exec perl -v
 ```
+
+## See Also ##
+
+* [phusion/baseimage](https://registry.hub.docker.com/u/phusion/baseimage)
+* [moltar/plenv.perl-latest](https://registry.hub.docker.com/u/moltar/plenv.perl-latest/)
