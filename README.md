@@ -8,7 +8,7 @@ In addition to basic Perl, it will install `cpanm` for each Perl version.
 
 The image is based on [phusion/baseimage](https://registry.hub.docker.com/u/phusion/baseimage).
 
-The image is available as a trusted build in [Docker Hub](https://registry.hub.docker.com/u/moltar/plenv/).
+The image is available as a trusted build on [Docker Hub](https://registry.hub.docker.com/u/moltar/plenv/).
 
 ## Usage ##
 
