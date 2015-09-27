@@ -10,7 +10,7 @@ ENV PLENV_INSTALL       $PLENV_ROOT/bin/plenv_install_perl.sh
 ADD plenv_install_perl.sh $PLENV_INSTALL
 
 RUN apt-get update -qq && \
-    apt-get install -y gcc make perl-modules && \
+    apt-get install -y gcc make perl-modules patch && \
     mkdir -p $PLENV_ROOT/plugins/perl-build && \
     curl -L --silent https://github.com/tokuhirom/plenv/archive/2.1.1.tar.gz     | tar -xz --strip 1 -C $PLENV_ROOT && \
     curl -L --silent https://github.com/tokuhirom/Perl-Build/archive/1.12.tar.gz | tar -xz --strip 1 -C $PLENV_ROOT/plugins/perl-build && \
